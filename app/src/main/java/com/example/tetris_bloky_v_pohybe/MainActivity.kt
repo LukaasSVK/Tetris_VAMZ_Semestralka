@@ -20,11 +20,29 @@ class MainActivity : ComponentActivity() {
 
     }
 
+    /**
+     * Čo spraviť
+     * 0. Začať pracovať na základnom hernom princípe
+     * 1. Vedieť vygenerovať jednu postupne padajúcu kocku
+     * 2. Vedieť z jednej kocky spraviť postupne padajúci náhodne sa generujúci blok
+     * 3. Pridávať bloky do "polopohyblivého gridu" -> čo spadnú na požadované miesto
+     * 4. Pridať padajúce bloky do pohyblivého gridu (ak už tak nebolo spravené)
+     * 5. Spraviť základnú funkciu pre "odpálenie plného riadku
+     * Zatiaľ toľko, zvyšok sa bude postupne pripisovať
+     */
     fun ukoncenie(view: View?){
         finishAndRemoveTask()
     }
 
     fun start(view: View?){
+
+    }
+
+    fun nastavenia(view: View?){
+
+    }
+
+    fun rebricek(view: View?){
 
     }
 }
