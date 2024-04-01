@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Tetris_bloky_v_pohybe</string>
+    <string name="tetris">TETRIS</string>
+    <string name="bloky_v_pohybe">Bloky v pohybe</string>
+    <string name="start">Štart</string>
+    <string name="koniec">Koniec</string>
+</resources>
