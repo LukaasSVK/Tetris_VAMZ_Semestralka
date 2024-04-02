@@ -1,48 +1,65 @@
 package com.example.tetris_bloky_v_pohybe
 
+import Ine.TetrisHra
+import Objekty.Kocka
+import android.graphics.Color
 import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
+import android.os.Handler
+import android.util.TypedValue
 import android.view.View
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.tetris_bloky_v_pohybe.ui.theme.Tetris_bloky_v_pohybeTheme
+import android.view.animation.TranslateAnimation
+import android.widget.LinearLayout
+import android.widget.TextView
+import androidx.activity.ComponentActivity
+import com.example.tetris_bloky_v_pohybe.R
+
+private lateinit var tetrisGridLayout: LinearLayout
+private lateinit var tetrisHra: TetrisHra
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        tetrisGridLayout = findViewById(R.id.tetrisGridLayout)
+        tetrisHra = TetrisHra()
+
+        // Spustíme vlákno, ktoré bude aktualizovať polohu kociek
+        val handler = Handler()
+        handler.post(object : Runnable {
+            override fun run() {
+                tetrisHra.update()
+                updateGrid()
+                handler.postDelayed(this, 1000) // Aktualizácia každú sekundu
+            }
+        })
+    }
+    private fun updateGrid() {
+        tetrisGridLayout.removeAllViews()
+        val grid = tetrisHra.getGrid()
+        for (row in grid) {
+            val rowLayout = LinearLayout(this)
+            val params = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+            )
+            rowLayout.layoutParams = params
+            for (cell in row) {
+                val textView = TextView(this)
+                val sizeInPixels = TypedValue.applyDimension(
+                    TypedValue.COMPLEX_UNIT_DIP,
+                    Kocka.SIZE.toFloat(),
+                    resources.displayMetrics
+                ).toInt()
+                val layoutParams = LinearLayout.LayoutParams(sizeInPixels, sizeInPixels)
+                textView.layoutParams = layoutParams
+                textView.setBackgroundColor(cell)
+                rowLayout.addView(textView)
+            }
+            tetrisGridLayout.addView(rowLayout)
+        }
     }
 
-    /**
-     * Čo spraviť
-     * 0. Začať pracovať na základnom hernom princípe
-     * 1. Vedieť vygenerovať jednu postupne padajúcu kocku
-     * 2. Vedieť z jednej kocky spraviť postupne padajúci náhodne sa generujúci blok
-     * 3. Pridávať bloky do "polopohyblivého gridu" -> čo spadnú na požadované miesto
-     * 4. Pridať padajúce bloky do pohyblivého gridu (ak už tak nebolo spravené)
-     * 5. Spraviť základnú funkciu pre "odpálenie plného riadku
-     * Zatiaľ toľko, zvyšok sa bude postupne pripisovať
-     */
-    fun ukoncenie(view: View?){
-        finishAndRemoveTask()
-    }
 
-    fun start(view: View?){
-
-    }
-
-    fun nastavenia(view: View?){
-
-    }
-
-    fun rebricek(view: View?){
-
-    }
 }
+

@@ -6,74 +6,19 @@
     android:layout_height="match_parent"
     android:orientation="horizontal">
 
-    <!-- Štart tlačítko -->
-    <Button
-        android:id="@+id/button"
+    <!-- Hracia plocha Tetris -->
+    <LinearLayout
+        android:id="@+id/tetrisGridLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="65dp"
-        android:layout_marginRight="65dp"
-        android:layout_marginBottom="230dp"
-        android:onClick="start"
-        android:text="@string/start"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <!-- Koniec tlačítko -->
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="65dp"
-        android:layout_marginRight="65dp"
-        android:layout_marginBottom="50dp"
-        android:onClick="ukoncenie"
-        android:text="@string/koniec"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <!-- Nastavenia tlačítko-->
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="65dp"
-        android:layout_marginRight="65dp"
-        android:layout_marginBottom="170dp"
-        android:text="@string/nastavenia"
-        android:onClick="nastavenia"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <!-- Rebríčk tlačítko -->
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/rebr_ek"
-        android:layout_marginLeft="65dp"
-        android:layout_marginRight="65dp"
-        android:layout_marginBottom="110dp"
-        android:onClick="rebricek"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <!-- obrázok s logom -->
-    <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="450dp"
-        android:src="@drawable/logo"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
-    <!-- TO-DO! - opraviť aby jednotlivé časti pozadia boli ako jeden obrázok -->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
